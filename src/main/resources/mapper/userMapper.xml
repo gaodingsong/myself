@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.UserMapper">
+
+    <resultMap id="baseMap" type="com.example.entity.User">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="headimg" jdbcType="VARCHAR" property="headimg" />
+        <result column="gender" jdbcType="TINYINT" property="gender" />
+        <result column="birthday" jdbcType="DATE" property="birthday" />
+        <result column="phone" jdbcType="CHAR" property="phone" />
+        <result column="mail" jdbcType="VARCHAR" property="mail" />
+        <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    </resultMap>
+
+    <select id="loginByPhoneAndPassword" resultMap="baseMap" >
+        SELECT *
+        FROM user
+        WHERE phone = #{loginVO.phone}
+          AND password = #{loginVO.password};
+    </select>
+</mapper>
