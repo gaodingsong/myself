@@ -1,7 +1,8 @@
-package com.example.mapper;
+package com.example.mapper.linux1;
 
-import com.example.entity.Test;
+import com.example.entity.linux1.Test;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -9,8 +10,10 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author gaodingsong
- * @since 2020-11-17
+ * @since 2021-01-08
  */
+@Repository
 public interface TestMapper extends BaseMapper<Test> {
 
+    Test test1(int i);
 }

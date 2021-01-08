@@ -1,6 +1,6 @@
 package com.example.service;
 
-import com.example.entity.Test2;
+import com.example.entity.linux2.Test2;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,9 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author gaodingsong
- * @since 2020-11-19
+ * @since 2021-01-08
  */
 public interface ITest2Service extends IService<Test2> {
 
-    void test5();
 }

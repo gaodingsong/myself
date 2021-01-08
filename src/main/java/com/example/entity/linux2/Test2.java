@@ -1,4 +1,4 @@
-package com.example.entity;
+package com.example.entity.linux2;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author gaodingsong
- * @since 2020-11-19
+ * @since 2021-01-08
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

@@ -2,14 +2,11 @@ package com.example.bloomfilter;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
-import com.example.entity.Test;
-import com.example.mapper.TestMapper;
 import com.google.common.hash.BloomFilter;
 import com.google.common.hash.Funnels;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.rmi.runtime.Log;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -24,8 +21,7 @@ import java.util.List;
 @Service
 public class BloomFilterService {
 
-    @Autowired
-    private TestMapper testMapper;
+
 
     private BloomFilter<Integer> bf;
 
@@ -36,16 +32,8 @@ public class BloomFilterService {
      */
     @PostConstruct
     public void initBloomFilter() {
-        QueryWrapper queryWrapper = new QueryWrapper();
-        List<Test> testList = testMapper.selectList(queryWrapper);
-        if (CollectionUtils.isEmpty(testList)) {
-            return;
-        }
-        //创建布隆过滤器(默认3%误差)
-        bf = BloomFilter.create(Funnels.integerFunnel(), testList.size());
-        for (Test test : testList) {
-            bf.put(test.getId());
-        }
+
+
     }
 
     /**
