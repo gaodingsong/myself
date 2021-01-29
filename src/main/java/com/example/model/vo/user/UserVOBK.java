@@ -1,5 +1,6 @@
 package com.example.model.vo.user;
 
+import com.alibaba.excel.annotation.ExcelProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -15,27 +16,28 @@ import java.time.LocalDate;
  */
 @Data
 @ApiModel(description = "用户信息")
-public class UserVO  implements Serializable {
+public class UserVOBK implements Serializable {
 
-    @ApiModelProperty(value = "用户名称")
+
+    @ExcelProperty(value = "用户名称", index = 0)
     private String name;
 
-    @ApiModelProperty(value = "用户头像")
+    @ExcelProperty(value = "用户头像", index = 1)
     private String headimg;
 
-    @ApiModelProperty(value = "性别，0：未知 ，1：男 ，2：女")
+    @ExcelProperty(value = "性别，0：未知 ，1：男 ，2：女", index = 2)
     private Integer gender;
 
-    @ApiModelProperty(value = "生日")
+    @ExcelProperty(value = "生日", index = 3)
     private LocalDate birthday;
 
-    @ApiModelProperty(value = "用户密码")
+    @ExcelProperty(value = "用户密码", index = 4)
     private String password;
 
-    @ApiModelProperty(value = "手机号")
+    @ExcelProperty(value = "手机号", index = 5)
     private String phone;
 
-    @ApiModelProperty(value = "邮箱")
+    @ExcelProperty(value = "邮箱", index = 6)
     private String mail;
 
 }

@@ -3,13 +3,21 @@ package com.example.controller;
 
 import com.example.enumeration.ErrorTypeEnum;
 import com.example.expection.MyRuntimeException;
-import com.example.service.ITest2Service;
+import com.example.model.vo.user.UserVO;
+import com.example.model.vo.user.UserVOBK;
 import com.example.service.ITestService;
+import com.example.util.ExcelHelper;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.List;
 
 /**
  * <p>
@@ -20,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2021-01-08
  */
 @RestController
-@RequestMapping("/test")
+@Controller("/test")
 public class TestController {
 
     @Autowired
@@ -28,6 +36,10 @@ public class TestController {
 
 //    @Autowired
 //    private ITest2Service test2Service2;
+
+
+    @Autowired
+    private ExcelHelper excelHelper;
 
     @GetMapping("test")
     public void test(){
@@ -43,5 +55,37 @@ public class TestController {
         }
         return "nihao";
     }
+
+
+
+
+    /**
+     * 导出excel
+     *
+     * @return
+     */
+    @GetMapping("/users/export")
+    public void exportUser( HttpServletResponse response) throws IOException {
+        List<UserVOBK> result = Lists.newArrayList();
+        for (int i = 0; i < 10; i++) {
+            UserVOBK vo = new UserVOBK();
+            vo.setName("test Export "+ i);
+            vo.setGender(1);
+            vo.setPassword(13456+"|");
+            vo.setPhone("155156225521");
+            result.add(vo);
+
+        }
+        //导出操作
+        try {
+            excelHelper.writeExcel(response, result, "会员信息", "sheet",
+                    UserVOBK.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("成功");
+    }
+
 
 }
