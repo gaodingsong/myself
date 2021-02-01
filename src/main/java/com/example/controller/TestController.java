@@ -3,13 +3,18 @@ package com.example.controller;
 
 import com.example.enumeration.ErrorTypeEnum;
 import com.example.expection.MyRuntimeException;
+import com.example.handler.HandlerAdapter;
+import com.example.handler.TypeHandler;
 import com.example.model.vo.user.UserVO;
 import com.example.model.vo.user.UserVOBK;
 import com.example.service.ITestService;
 import com.example.util.ExcelHelper;
+import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,6 +38,10 @@ public class TestController {
 
     @Autowired
     private ITestService testService1;
+
+
+    @Autowired
+    private HandlerAdapter HandlerAdapter;
 
 //    @Autowired
 //    private ITest2Service test2Service2;
@@ -87,5 +96,19 @@ public class TestController {
         System.out.println("成功");
     }
 
+    @GetMapping("/tttt")
+    public void tttt(String str){
+        HandlerAdapter.handle(str,str);
+    }
 
+
+    public static void main(String[] args) {
+        //  判断是否是空字符串
+        boolean text = StringUtils.hasText(" ");
+        System.out.println(text);
+        boolean b = StringUtils.hasLength(null);
+
+        System.out.println(b);
+
+    }
 }
