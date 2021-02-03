@@ -9,6 +9,7 @@ import com.example.model.vo.user.UserVO;
 import com.example.model.vo.user.UserVOBK;
 import com.example.service.ITestService;
 import com.example.util.ExcelHelper;
+import com.example.validation.PreCheckUtil;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +59,13 @@ public class TestController {
     @GetMapping("/test2")
     public  String test2(){
         try {
-            int a = 10/0;
+
+            Integer a = null;
+            String str = "adfa";
+            PreCheckUtil.checker().checkNull(a,ErrorTypeEnum.PARAM_ERROR)
+                    .checkNull(str,ErrorTypeEnum.PARAM_ERROR);
+
+            System.out.println(str);
         } catch (Exception e) {
             throw new MyRuntimeException(ErrorTypeEnum.PARAM_ERROR.getCode(), ErrorTypeEnum.PARAM_ERROR.getMessage());
         }
