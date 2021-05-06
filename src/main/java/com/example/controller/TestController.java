@@ -1,6 +1,9 @@
 package com.example.controller;
 
 
+import cn.hutool.core.date.DateTime;
+import cn.hutool.core.date.DateUtil;
+import com.example.entity.linux1.Test;
 import com.example.enumeration.ErrorTypeEnum;
 import com.example.expection.MyRuntimeException;
 import com.example.handler.HandlerAdapter;
@@ -16,7 +19,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -111,11 +116,18 @@ public class TestController {
 
     public static void main(String[] args) {
         //  判断是否是空字符串
-        boolean text = StringUtils.hasText(" ");
-        System.out.println(text);
-        boolean b = StringUtils.hasLength(null);
+        boolean text = StringUtils.hasText(null);
+        System.out.println("hasText:"+text);
+        boolean b = StringUtils.hasLength(" ");
 
-        System.out.println(b);
+        System.out.println("hasLength:"+b);
+
+
+    }
+
+    @GetMapping("/testValid")
+    public void testValid( @Validated @RequestBody Test t){
+        System.out.println(t);
 
     }
 }

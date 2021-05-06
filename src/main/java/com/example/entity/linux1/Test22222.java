@@ -2,9 +2,10 @@ package com.example.entity.linux1;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
 
 /**
  * <p>
@@ -15,15 +16,10 @@ import lombok.EqualsAndHashCode;
  * @since 2021-01-08
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class Test implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Test22222 implements Serializable {
 
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
-
+//    @NotNull()
     private String name;
 
     private Integer age;
