@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import com.example.common.BuildThreadPool;
+
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -13,16 +15,18 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThreadPoolExecutorController {
     public static void main(String[] args) {
+//
+//        ThreadPoolExecutor threadPool = new ThreadPoolExecutor(
+//                2,// 核心线程池大小
+//                 5,// 最大核心线程池大小
+//                 3,// 超时了没有人调用就失效释放
+//                TimeUnit.SECONDS, new LinkedBlockingDeque<>(3),
+//                Executors.defaultThreadFactory(),
+//                new ThreadPoolExecutor.DiscardOldestPolicy()
+//
+//        );
 
-        ThreadPoolExecutor threadPool = new ThreadPoolExecutor(
-                2,// 核心线程池大小
-                 5,// 最大核心线程池大小
-                 3,// 超时了没有人调用就失效释放
-                TimeUnit.SECONDS, new LinkedBlockingDeque<>(3),
-                Executors.defaultThreadFactory(),
-                new ThreadPoolExecutor.DiscardOldestPolicy()
-
-        );
+        ThreadPoolExecutor threadPool = BuildThreadPool.threadPoolExecutor();
 
         try {
             for (int i = 0; i < 90; i++) {
