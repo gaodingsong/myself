@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.designpatterns.adapterpattern.HandlerAdapter2;
 import com.example.designpatterns.strategypattern.IPayment;
 import com.example.designpatterns.strategypattern.Order;
 import com.example.designpatterns.strategypattern.PayResult;
@@ -25,6 +26,9 @@ public class DesignPatternController {
 
     @Autowired
     private ApplicationContext applicationContext;
+
+    @Autowired
+    private HandlerAdapter2 handlerAdapter;
 
     @Resource(name = "WechatPay")
     private IPayment iPayment;
@@ -56,6 +60,14 @@ public class DesignPatternController {
         return payResult;
     }
 
+
+
+    // 适配器模式
+    @GetMapping("/adapter")
+    public  void adapterPattern(String str){
+        handlerAdapter.handle(str,str);
+
+    }
 
 
 }
