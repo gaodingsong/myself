@@ -1,8 +1,8 @@
 package com.example.controller;
 
-import com.example.designpatterns.designpattern.IPayment;
-import com.example.designpatterns.designpattern.Order;
-import com.example.designpatterns.designpattern.PayResult;
+import com.example.designpatterns.strategypattern.IPayment;
+import com.example.designpatterns.strategypattern.Order;
+import com.example.designpatterns.strategypattern.PayResult;
 import com.example.enumeration.StrategyPatternEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -21,7 +21,7 @@ import javax.annotation.Resource;
  */
 @RestController
 @Controller("/design/pattern")
-public class StrategPatternController {
+public class DesignPatternController {
 
     @Autowired
     private ApplicationContext applicationContext;
@@ -29,7 +29,15 @@ public class StrategPatternController {
     @Resource(name = "WechatPay")
     private IPayment iPayment;
 
-    @GetMapping("/pay")
+    /**
+     * 策略，模式
+     * 优点：1、干掉繁琐的 if、switch 判断逻辑；2、代码优雅、可复用、可读性好；3、符合开闭原则，扩展性好、便于维护；
+     * 缺点：1、策略如果很多的话，会造成策略类膨胀；2、使用者必须清楚所有的策略类及其用途；
+     * @param amount
+     * @param paymentType
+     * @return
+     */
+    @GetMapping("/strategy")
     public PayResult pay(@RequestParam("amount") int amount,
                          @RequestParam("paymentType") int paymentType) {
         Order order = new Order();
@@ -47,4 +55,7 @@ public class StrategPatternController {
 
         return payResult;
     }
+
+
+
 }

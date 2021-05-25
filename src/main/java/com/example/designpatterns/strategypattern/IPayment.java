@@ -1,4 +1,4 @@
-package com.example.designpatterns.designpattern;
+package com.example.designpatterns.strategypattern;
 
 /**
  * @description:策略模式接口

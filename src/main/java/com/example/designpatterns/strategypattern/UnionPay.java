@@ -1,4 +1,4 @@
-package com.example.designpatterns.designpattern;
+package com.example.designpatterns.strategypattern;
 
 import org.springframework.stereotype.Service;
 
@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
  * @createTime:2021/5/25 16:05
  * @version:1.0
  */
-@Service("Alipay")
-public class Alipay implements IPayment{
+@Service("UnionPay")
+public class UnionPay implements IPayment{
     @Override
     public PayResult pay(Order order) {
-        return new PayResult("支付宝支付成功");
+        return new PayResult("云闪付支付成功");
     }
 }
