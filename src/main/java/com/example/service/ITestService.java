@@ -13,6 +13,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ITestService extends IService<Test> {
 
-    void test();
+    Integer test();
 
+    String test666(String stt);
 }

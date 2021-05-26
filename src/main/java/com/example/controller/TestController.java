@@ -3,6 +3,8 @@ package com.example.controller;
 
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.date.DateUtil;
+import com.example.common.MyResponse;
+import com.example.core.BaseService;
 import com.example.entity.linux1.Test;
 import com.example.enumeration.ErrorTypeEnum;
 import com.example.expection.MyRuntimeException;
@@ -40,7 +42,7 @@ import java.util.List;
  */
 @RestController
 @Controller("/test")
-public class TestController {
+public class TestController implements BaseService {
 
     @Autowired
     private ITestService testService1;
@@ -57,8 +59,16 @@ public class TestController {
     private ExcelHelper excelHelper;
 
     @GetMapping("test")
-    public void test(){
-        testService1.test();
+    public MyResponse test(){
+        return doServiceNoArg(testService1::test,"test");
+
+
+    }
+
+
+    @GetMapping("test666")
+    public MyResponse test666(String str){
+        return doService(testService1::test666,str,"test666");
     }
 
     @GetMapping("/test2")

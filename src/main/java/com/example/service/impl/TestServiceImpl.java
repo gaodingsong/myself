@@ -29,10 +29,17 @@ public class TestServiceImpl extends ServiceImpl<TestMapper, Test> implements IT
 
     @Override
 //    @DS("db2")
-    public void test() {
-        Test test = testMapper.test1(1);
-//        Test2 test = test2Mapper2.selectById(5);
-        Test2 test2 = test2Mapper2.test2(5);
-        System.out.println(test+","+test2);
+    public Integer test() {
+//        Test test = testMapper.test1(1);
+////        Test2 test = test2Mapper2.selectById(5);
+//        Test2 test2 = test2Mapper2.test2(5);
+//        System.out.println(test+","+test2);
+
+        return 21;
+    }
+
+    @Override
+    public String test666(String stt) {
+        return "aaaaaaaaaaaaaa";
     }
 }
