@@ -40,7 +40,7 @@ public interface BaseService {
             result = function.apply(param);
             return getGqResponse(result);
         } catch (MyRuntimeException e) {
-            LOGGER.error("【crm】request method{},request param error: {}--{}", methodName, e.getCode(), e.getMessage());
+            LOGGER.error("【myself】request method{},request param error: {}--{}", methodName, e.getCode(), e.getMessage());
             return MyResponse.fail(e.getCode(), e.getMessage());
         } catch (Exception e) {
             LOGGER.error(String.format(ErrorConstant.GLOBAL_ERROR_FORMAT, methodName, GsonUtil.toJsonContainNull(param)), e);
@@ -64,7 +64,7 @@ public interface BaseService {
             result = supplier.get();
             return getGqResponse(result);
         } catch (MyRuntimeException e) {
-            LOGGER.error("【crm】request method【{}】,request param error: {}--{}", methodName, e.getCode(), e.getMessage());
+            LOGGER.error("【myself】request method【{}】,request param error: {}--{}", methodName, e.getCode(), e.getMessage());
             return MyResponse.fail(e.getCode(), e.getMessage());
         } catch (Exception e) {
             LOGGER.error(String.format(ErrorConstant.GLOBAL_ERROR_FORMAT, methodName, CommonConstant.EMPTY_STRING), e);
