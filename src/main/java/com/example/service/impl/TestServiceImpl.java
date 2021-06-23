@@ -1,6 +1,7 @@
 package com.example.service.impl;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
+import com.example.context.ServiceContextHolder;
 import com.example.entity.linux1.Test;
 import com.example.entity.linux2.Test2;
 import com.example.mapper.linux1.TestMapper;
@@ -41,5 +42,17 @@ public class TestServiceImpl extends ServiceImpl<TestMapper, Test> implements IT
     @Override
     public String test666(String stt) {
         return "aaaaaaaaaaaaaa";
+    }
+
+    @Override
+    public void testThreadLocal() {
+        try {
+            String a  = (String) ServiceContextHolder.getCurrentContext().getData();
+            System.out.println(a);
+        }finally {
+            ServiceContextHolder .clean();
+        }
+
+        System.out.println(12);
     }
 }

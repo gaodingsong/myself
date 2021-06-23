@@ -16,4 +16,7 @@ public interface ITestService extends IService<Test> {
     Integer test();
 
     String test666(String stt);
+
+    void testThreadLocal();
+
 }
