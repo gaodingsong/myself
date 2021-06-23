@@ -18,7 +18,7 @@ public class BuildThreadPool {
                 2,// 核心线程池大小
                 5,// 最大核心线程池大小
                 3,// 超时了没有人调用就失效释放
-                TimeUnit.SECONDS, new LinkedBlockingDeque<>(3),
+                TimeUnit.SECONDS, new LinkedBlockingDeque<>(20),
                 Executors.defaultThreadFactory(),
                 new ThreadPoolExecutor.DiscardOldestPolicy()
 

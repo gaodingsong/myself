@@ -29,13 +29,14 @@ public class ThreadPoolExecutorController {
         ThreadPoolExecutor threadPool = BuildThreadPool.threadPoolExecutor();
 
         try {
-            for (int i = 0; i < 90; i++) {
+            for (int i = 0; i < 10; i++) {
+                int finalI = i;
                 threadPool.execute(()->{
 
                     // 代码逻辑开始
                     //  ...
                     //代码逻辑结束
-                    System.out.println(Thread.currentThread().getName());
+                    System.out.println(Thread.currentThread().getName()+"=====>>>"+ finalI);
                 });
             }
         }catch (Exception e){

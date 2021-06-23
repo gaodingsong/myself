@@ -118,7 +118,8 @@ public class Test2Controller {
                       e.printStackTrace();
                   }finally {
                       semaphore.release();
-                        } }).start(); }
+                        } }).start();
+         }
     }
 
 }
