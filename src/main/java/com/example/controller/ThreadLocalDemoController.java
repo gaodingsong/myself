@@ -28,7 +28,8 @@ public class ThreadLocalDemoController {
         ServiceContextHolder.success("你好，我在测试ThreadLocal");
 
         testService1.testThreadLocal();
-
+        String a  = (String) ServiceContextHolder.getCurrentContext().getData();
+        System.out.println(a);
 
     }
 

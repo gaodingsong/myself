@@ -8,10 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author majiawei
- * @classname FilterCondition
- * @desc
- * @date create in 2020/9/7 15:19
+ *
  */
 @Data
 @NoArgsConstructor

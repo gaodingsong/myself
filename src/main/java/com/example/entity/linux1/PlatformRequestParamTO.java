@@ -7,12 +7,7 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * @author majiawei
- * @classname PlatformRequestParamTO
- * @desc
- * @date create in 2021/4/14 15:13
- */
+
 @Data
 public class PlatformRequestParamTO implements Serializable {
     private List<String> cols;

@@ -2,10 +2,8 @@ package com.example.context;
 
 
 /**
- * @author majiawei
- * @classname ServiceContextHolder
- * @desc
- * @date create in 2020/7/24 14:25
+ * ServiceContextHolder
+ * @param <T>
  */
 public class ServiceContextHolder<T> {
 

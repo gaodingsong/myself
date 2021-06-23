@@ -5,10 +5,8 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author majiawei
- * @classname ServiceContext
- * @desc
- * @date create in 2020/7/24 14:24
+ * ServiceContextHolder
+ * @param <T>
  */
 @Data
 public class ServiceContext<T> implements Serializable {
