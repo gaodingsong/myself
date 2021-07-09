@@ -9,7 +9,7 @@ package com.example.datastructures.stack;
 public class Calculator {
 
     public static void main(String[] args) {
-        String expression = "3+2*6-2";
+        String expression = "70+2*6-2";
         // 创建两个栈，一个是数栈  一个是号栈
         ArrayStack2 numStack = new ArrayStack2(10);
         ArrayStack2 operStack = new ArrayStack2(10);
@@ -22,6 +22,7 @@ public class Calculator {
         int res =0;
 
         char ch = ' '; // 将每次扫描得到的char保存到ch
+        String keepNum = "";// 用于拼接多位数
         // 开始while循环的扫描expression
         while (true){
             // 依次得到expression的每一个字符
@@ -52,7 +53,23 @@ public class Calculator {
                 }
             }else {
                 // 如果是数  则直接入数栈
-                numStack.push(ch -48);
+//                numStack.push(ch -48);
+
+                // 处理多位数
+                keepNum += ch;
+
+                if (index == expression.length()-1){
+                    numStack.push(Integer.parseInt(keepNum));
+                }else {
+                    // 判断一字符串是不是数字，如果是数字就继续扫描  如果是运算符则入栈
+                    if (operStack.isOper(expression.substring(index+1,index+2).charAt(0))){
+                        // 如果最后一位是运算符，则入栈keepNum = "1"
+                        numStack.push(Integer.parseInt(keepNum));
+                        keepNum = "";
+                    }
+                }
+
+
             }
             // 让index+1 并判断是否扫描到expression最后
             index++;
