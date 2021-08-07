@@ -86,4 +86,73 @@ public class SortUtils {
 
     }
 
+    /**
+     * 插入排序，从小到大
+     */
+    public static void insertSortFromSmallToBig(int[] arr){
+        int insertVal = 0;
+        int insertIndex = 0; // 即arr[1]前面这个数的下标
+
+        for (int i = 1; i < arr.length; i++) {
+
+            // {101, 34, 119, 1  }
+            // 1。定义待插入的数据
+            insertVal = arr[i];
+            insertIndex = i-1; // 即arr[1]前面这个数的下标
+
+
+            // 给insertValue找到插入的位置
+            // 说明：
+            // 1,insertIndex >= 0保证给insertVal找插入位置，不越界
+            // 2,insertVal<arr[insertIndex] 说明还没有找到待插入的位置
+            // 3,就需要将insertIndex--  后移
+            while (insertIndex >= 0 && insertVal  < arr[insertIndex]){
+                arr[insertIndex +1] = arr[insertIndex];
+                insertIndex--;
+            }
+            // 当退出while的时候  说明找到了插入位置，insertIndex+1
+            // 这里判断一下是否需要赋值
+            if (insertIndex +1 != i){
+                arr[insertIndex +1] = insertVal;
+            }
+
+        }
+
+    }
+
+
+    /**
+     * 插入排序  从大到小
+     * @param arr
+     */
+    public static void insertSortFromBigToSmall(int[] arr){
+        int insertVal = 0;
+        int insertIndex = 0; // 即arr[1]前面这个数的下标
+
+        for (int i = 1; i < arr.length; i++) {
+
+            // {101, 34, 119, 1  }
+            // 1。定义待插入的数据
+             insertVal = arr[i];
+             insertIndex = i-1; // 即arr[1]前面这个数的下标
+
+
+            // 给insertValue找到插入的位置
+            // 说明：
+            // 1,insertIndex >= 0保证给insertVal找插入位置，不越界
+            // 2,insertVal<arr[insertIndex] 说明还没有找到待插入的位置
+            // 3,就需要将insertIndex--  后移
+            while (insertIndex >= 0 && insertVal  > arr[insertIndex]){
+                arr[insertIndex +1] = arr[insertIndex];
+                insertIndex--;
+            }
+            // 当退出while的时候  说明找到了插入位置，insertIndex+1
+            // 这里判断一下是否需要赋值
+            if (insertIndex +1 != i){
+                arr[insertIndex +1] = insertVal;
+            }
+
+        }
+
+    }
 }
