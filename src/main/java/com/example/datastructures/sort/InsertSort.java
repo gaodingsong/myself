@@ -14,7 +14,7 @@ public class InsertSort {
     public static void main(String[] args) {
 
 //        int[] arr = {101, 34, 119, 1 ,-1,89 };
-        int[] arr = CommonUtil.randomArr(8);
+        int[] arr = CommonUtil.randomArr(80000);
         String now = DateUtil.now();
         System.out.println("排序前的时间："+now);
         insertSort(arr);
@@ -22,7 +22,7 @@ public class InsertSort {
         SortUtils.insertSortFromSmallToBig(arr);
         String now2= DateUtil.now();
         System.out.println("排序后的时间："+now2);
-        System.out.println(Arrays.toString(arr));
+//        System.out.println(Arrays.toString(arr));
     }
 
 

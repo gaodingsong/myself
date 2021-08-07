@@ -155,4 +155,30 @@ public class SortUtils {
         }
 
     }
+
+    /**
+     * 希尔排序移位法
+     * @param arr
+     */
+    public static void shellSort(int[] arr){
+        // 增量gap  并逐渐缩小增量
+        for (int gap = arr.length/2; gap > 0 ; gap/=2) {
+            // 从第gap个元素，逐个对其所在的组进行插入排序
+            for (int i = gap; i < arr.length; i++) {
+                int j = i;
+                int temp = arr[j];
+                if (arr[j] < arr[j - gap]){
+                    while (j - gap >= 0 && temp< arr[j - gap]){
+                        arr[j] = arr[j - gap];
+                        j-= gap;
+                    }
+                    // 当退出循环 说明找到位置
+                    arr[j] = temp;
+                }
+
+
+            }
+
+        }
+    }
 }
