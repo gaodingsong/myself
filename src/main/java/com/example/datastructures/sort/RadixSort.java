@@ -19,7 +19,7 @@ public class RadixSort {
         int[] arr = CommonUtil.randomArr(10000000);
         String now = DateUtil.now();
         System.out.println("排序前的时间："+now);
-        radixSort(arr);
+        SortUtils.radixSort(arr);
 
 
         String now2= DateUtil.now();
