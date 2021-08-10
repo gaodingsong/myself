@@ -1,23 +1,19 @@
-package com.example.datastructures.search;
+package com.example.util;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
- * 二分查找法
+ * 查找算法 工具类
  */
-public class BinarySearch {
-    public static void main(String[] args) {
-        int[] arr ={1,8, 10, 89, 1000, 1000,1000,1000,1000,1234};
-//        int resIndex = binarySearchOne(arr,0,arr.length,1234);
-//        System.out.println("resIndex:"+resIndex);
+public class SearchUtils {
 
-        List<Integer>  list = binarySearchAll(arr,0,arr.length,8);
-        System.out.println(list);
-    }
+
+
+
+
 
     /**
-     *
+     *二分查找法  只查一个
      * @param arr 原始数组
      * @param left  左边索引
      * @param right  右边索引
@@ -51,7 +47,14 @@ public class BinarySearch {
      * 3.向mid索引值右边扫描 将所有满足1000 的元素的下标加入到ArrayList中
      * 4.将ArrayList返回
      */
-
+    /**
+     *二分查找法  查询所有
+     * @param arr 原始数组
+     * @param left  左边索引
+     * @param right  右边索引
+     * @param findVal 要查找的值  如果找不到就返回-1
+     * @return
+     */
     public static ArrayList<Integer> binarySearchAll(int[] arr , int left, int right, int findVal){
         // 当left大于right的时候 说明递归整个数组，但是没有找到
         if (left > right){
@@ -100,6 +103,18 @@ public class BinarySearch {
             return resIndexList;
 
         }
+
+    }
+
+
+    public static int seqSearch(int[] arr,int value){
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == value){
+                return i;
+            }
+
+        }
+        return -1;
 
     }
 }
