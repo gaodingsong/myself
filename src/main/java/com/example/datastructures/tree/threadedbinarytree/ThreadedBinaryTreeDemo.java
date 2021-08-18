@@ -27,6 +27,8 @@ public class ThreadedBinaryTreeDemo {
         HeroNode right = node5.getRight();
         System.out.println("10号节点前驱节点是："+ left.toString());
         System.out.println("10号节点后继节点是："+ right.toString());
+        System.out.println("=====================");
+        threadedBinaryTree.threadedList();
 
     }
 }
@@ -46,6 +48,22 @@ class ThreadedBinaryTree{
         this.threadedNode(root);
 
     }
+
+    public void threadedList(){
+        HeroNode node = root;
+        while (node != null){
+            while (node.getLeftType() ==  0){
+                node = node.getLeft();
+            }
+            System.out.println(node);
+            while (node.getRightType() == 1){
+                node = node.getRight();
+                System.out.println(node);
+            }
+            node = node.getRight();
+        }
+    }
+
 
     public HeroNode getPre() {
         return pre;
