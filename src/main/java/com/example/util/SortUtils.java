@@ -6,6 +6,59 @@ package com.example.util;
 public class SortUtils {
 
 
+
+    public static void heapSort(int[] arr){
+
+        int temp ;
+
+        // 将一个无序序列调整一个大顶堆
+        for (int i = arr.length/2-1; i >= 0 ; i--) {
+            adjustHeap(arr,i,arr.length);
+
+        }
+        // 将顶堆元素与末尾元素交换，将最大元素  沉到数组末端
+
+        for (int j = arr.length-1; j >0; j--) {
+            // 交换
+            temp = arr[j];
+            arr[j] = arr[0];
+            arr[0] = temp;
+            adjustHeap(arr,0,j);
+        }
+
+    }
+
+
+
+    /**
+     *  将一个数组（二叉树） 调整成一个大顶堆
+     * @param arr  待调整的数组
+     * @param i  表示非叶子节点在数组中的索引
+     * @param length  表示对多少个元素进行继续调整，length在逐渐减少
+     */
+    public static void adjustHeap(int[] arr , int i, int length){
+
+
+        int temp = arr[i];
+
+        for (int k = i*2+1; k < length; k = i*2+1) {
+            if (k+1< length && arr[k] < arr[k+1]){// 说明左子节点的值小于右子节点的值
+                k++;
+            }
+            if(arr[k] > temp){// 如果子节点大于父节点
+                arr[i] = arr[k];
+                i=k;
+            }else {
+                break;
+            }
+        }
+
+        // 当for循环结束后 我们已经将以i为父节点的树的最大值  放在了最顶（局部）
+        arr[i] =temp;// 将temp值放到调整后的位置
+
+    }
+
+
     /**
      *  基数排序
      * @param arr
