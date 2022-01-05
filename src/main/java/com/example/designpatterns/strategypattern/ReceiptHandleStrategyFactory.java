@@ -22,12 +22,6 @@ public class ReceiptHandleStrategyFactory {
         receiptHandleStrategyMap.put("MT8104",new Mt8104ReceiptHandleStrategy());
     }
 
-//    public ReceiptHandleStrategyFactory(){
-//        this.receiptHandleStrategyMap = new HashMap<>();
-//        this.receiptHandleStrategyMap.put("MT2101",new Mt2101ReceiptHandleStrategy());
-//        this.receiptHandleStrategyMap.put("MT8104",new Mt8104ReceiptHandleStrategy());
-//    }
-
     public static IReceiptHandleStrategy getReceiptHandleStrategy(String receiptType){
         return receiptHandleStrategyMap.get(receiptType);
     }
