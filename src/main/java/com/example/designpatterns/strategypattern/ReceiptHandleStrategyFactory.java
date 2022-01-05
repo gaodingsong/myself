@@ -14,10 +14,9 @@ public class ReceiptHandleStrategyFactory {
 
 
 
-    private static Map<String,IReceiptHandleStrategy> receiptHandleStrategyMap;
+    private static Map<String,IReceiptHandleStrategy> receiptHandleStrategyMap = new HashMap<>();
 
     static {
-        receiptHandleStrategyMap = new HashMap<>();
         receiptHandleStrategyMap.put("MT2101",new Mt2101ReceiptHandleStrategy());
         receiptHandleStrategyMap.put("MT8104",new Mt8104ReceiptHandleStrategy());
     }
