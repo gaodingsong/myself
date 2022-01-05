@@ -1,6 +1,5 @@
 package com.example.designpatterns.strategypattern;
 
-import com.alibaba.druid.util.StringUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,14 +16,26 @@ public class ReceiptHandleStrategyFactory {
 
     private static Map<String,IReceiptHandleStrategy> receiptHandleStrategyMap;
 
-    private ReceiptHandleStrategyFactory(){
-        this.receiptHandleStrategyMap = new HashMap<>();
-        this.receiptHandleStrategyMap.put("MT2101",new Mt2101ReceiptHandleStrategy());
-        this.receiptHandleStrategyMap.put("MT8104",new Mt8104ReceiptHandleStrategy());
+    static {
+        receiptHandleStrategyMap = new HashMap<>();
+        receiptHandleStrategyMap.put("MT2101",new Mt2101ReceiptHandleStrategy());
+        receiptHandleStrategyMap.put("MT8104",new Mt8104ReceiptHandleStrategy());
     }
+
+//    public ReceiptHandleStrategyFactory(){
+//        this.receiptHandleStrategyMap = new HashMap<>();
+//        this.receiptHandleStrategyMap.put("MT2101",new Mt2101ReceiptHandleStrategy());
+//        this.receiptHandleStrategyMap.put("MT8104",new Mt8104ReceiptHandleStrategy());
+//    }
 
     public static IReceiptHandleStrategy getReceiptHandleStrategy(String receiptType){
         return receiptHandleStrategyMap.get(receiptType);
+    }
+
+    public static void main(String[] args) {
+        IReceiptHandleStrategy mt2101 = new ReceiptHandleStrategyFactory().getReceiptHandleStrategy("MT2101");
+        System.out.println(mt2101);
+
     }
 
 //    private ReceiptHandleStrategyFactory(){}
