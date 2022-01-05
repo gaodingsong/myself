@@ -20,6 +20,11 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+
+        </dependency>
         <!--二维码-->
 
         <dependency>
