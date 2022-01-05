@@ -1,0 +1,24 @@
+package com.example.designpatterns.chainofresponsibilitypattern;
+
+import com.alibaba.druid.util.StringUtils;
+import com.example.designpatterns.strategypattern.Receipt;
+
+/**
+ * @author:gaodingsong
+ * @description:
+ * @createTime:2022/1/5 3:43 下午
+ * @version:1.0
+ */
+public class Mt2101ReceiptHandler implements IReceiptHandler{
+
+    @Override
+    public void handleReceipt(Receipt receipt, IReceiptHandleChain handleChain) {
+        if (StringUtils.equals("MT2101",receipt.getType())) {
+            System.out.println("解析报文MT2101:" + receipt.getMessage());
+        }
+        //处理不了该回执就往下传递
+        else {
+            handleChain.handleReceipt(receipt);
+        }
+    }
+}
