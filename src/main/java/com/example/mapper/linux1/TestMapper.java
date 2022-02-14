@@ -4,6 +4,8 @@ import com.example.entity.linux1.Test;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -16,4 +18,6 @@ import org.springframework.stereotype.Repository;
 public interface TestMapper extends BaseMapper<Test> {
 
     Test test1(int i);
+
+    List<Test> selectAll();
 }

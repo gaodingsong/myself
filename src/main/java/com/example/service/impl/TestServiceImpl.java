@@ -1,6 +1,7 @@
 package com.example.service.impl;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.context.ServiceContextHolder;
 import com.example.entity.linux1.Test;
 import com.example.entity.linux2.Test2;
@@ -10,6 +11,8 @@ import com.example.service.ITestService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -54,5 +57,10 @@ public class TestServiceImpl extends ServiceImpl<TestMapper, Test> implements IT
         }
 
         System.out.println(12);
+    }
+
+    @Override
+    public List<Test> selectAll() {
+        return testMapper.selectAll();
     }
 }

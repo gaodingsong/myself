@@ -7,4 +7,8 @@
         select
         id,`name`,age,sex from test limit 1
     </select>
+    <select id="selectAll" resultType="com.example.entity.linux1.Test">
+        select
+            id,`name`,age,sex from test
+    </select>
 </mapper>
