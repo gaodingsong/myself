@@ -59,7 +59,7 @@ public class RedisBloomFilter {
     @PostConstruct
     public void init(){
         this.numBits =optimalNumOfBits(expectedInsertions,fpp);
-        this.expectedInsertions = optimalNumOfHashFunctions(expectedInsertions,numBits);
+        this.numHashFunctions = optimalNumOfHashFunctions(expectedInsertions,numBits);
 
     }
 
