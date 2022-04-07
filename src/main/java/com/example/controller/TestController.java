@@ -18,6 +18,7 @@ import com.example.validation.PreCheckUtil;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
@@ -32,6 +33,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * <p>
@@ -52,12 +54,29 @@ public class TestController implements BaseService {
     @Autowired
     private HandlerAdapter HandlerAdapter;
 
+    @Autowired
+    private StringRedisTemplate redisTemplate;
+
 //    @Autowired
 //    private ITest2Service test2Service2;
 
 
+
+
     @Autowired
     private ExcelHelper excelHelper;
+
+    @GetMapping("testSetHashRedis")
+    public void testSetHashRedis(){
+        for (int i = 0; i < 3; i++) {
+            redisTemplate.opsForHash().put("testSetHashRedis",String.valueOf(i),"test00"+i);
+            redisTemplate.expire("testSetHashRedis",10L, TimeUnit.SECONDS);
+        }
+
+
+
+    }
+
 
     @GetMapping("test")
     public MyResponse test(){
